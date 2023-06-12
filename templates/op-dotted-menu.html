@@ -1,253 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="Mosaddek">
-    <!--favicon icon-->
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
-    <title>PysankyX</title>
-    <!--common style-->
-    <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'>
-
-    <!-- inject:css -->
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/animate/animate.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/elasic-slider/elastic.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/iconmoon/linea-icon.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/magnific-popup/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/owl-carousel/owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/owl-carousel/owl.theme.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/shortcodes.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/default-theme.css') }}">
-    <!-- endinject -->
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="assets/vendor/backward/html5shiv.js"></script>
-    <script src="assets/vendor/backward/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-
-    <!--  preloader start -->
-    <div id="tb-preloader">
-        <div class="tb-preloader-wave"></div>
-    </div>
-    <!-- preloader end -->
-
-
-    <div class="wrapper" id="home">
-
-        <!--header start-->
-        <nav id="cd-vertical-nav" class="dotted-nav">
-            <ul class="op-nav">
-                <li>
-                    <a href="#home">
-                        <span class="cd-dot"></span>
-                        <span class="cd-label">Home</span>
-                    </a>
-
-                </li>
-                <li>
-                    <a href="#start">
-                        <span class="cd-dot"></span>
-                        <span class="cd-label">About</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#price">
-                        <span class="cd-dot"></span>
-                        <span class="cd-label">Cart</span>
-                    </a>
-                </li>
-
-            </ul>
-        </nav>
-        <!--for responsive nav-->
-        <a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
-        <!--header end-->
-
-        <!--hero section-->
-        <div id="fullscreen-banner" class="full-banner text-center vertical-align banner-onedot">
-            <div class="">
-                    <img class="page-banner-madao" src="{{ url_for('static', filename='img/banner/g167.png') }}" alt="" />
-            </div>
-            <div class="container-mid">
-                <div class="container">
-                    <div class="banner-title">
-                        <h3 class="text-uppercase semi-transparent theme-bg-space m-top-0 light-txt">We Love to design the impossible {{greetings}}</h3>
-                    </div>
+{% block content %}
+    <!--hero section-->
+    <div id="fullscreen-banner" class="full-banner text-center vertical-align banner-onedot">
+        <div class="">
+                <img class="page-banner-madao" src="{{ url_for('static', filename='img/banner/g167.png') }}" alt="" />
+        </div>
+        <div class="container-mid">
+            <div class="container">
+                <div class="banner-title">
+                    <h3 class="text-uppercase semi-transparent theme-bg-space m-top-0 light-txt">We Love to design the impossible {{greetings}}</h3>
                 </div>
             </div>
-
-
         </div>
-        <!--hero section-->
 
-        <!--body content start-->
-        <section class="body-content">
-            <div class="container">
-                <div class="row ">
-                    <!-- Have to clarify where this will be  -->
-                    {% if pysankyx %}
-                    <div class="text-center">
-                        <ul class="portfolio-filter">
-                            <li class="active">
-                                <a href="#" data-filter="*"> All</a>
+
+    </div>
+    <!--hero section-->
+
+    <!--body content start-->
+    <section class="body-content">
+        <div class="container">
+            <div class="row ">
+                <!-- Have to clarify where this will be  -->
+                {% if pysankyx %}
+                <div class="text-center">
+                    <ul class="portfolio-filter">
+                        <li class="active">
+                            <a href="#" data-filter="*"> All</a>
+                        </li>
+                        {% for obj in filter %}
+                            <li class="">
+                                <a href="#" data-filter=".{{obj.slug}}">{{obj.name}}</a>
                             </li>
-                            {% for obj in filter %}
-                                <li class="">
-                                    <a href="#" data-filter=".{{obj.slug}}">{{obj.name}}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                        {% endfor %}
+                    </ul>
+                </div>
 
-                    <div class="portfolio portfolio-with-title portfolio-masonry blog-m col-2 gutter ">
+                <div class="portfolio portfolio-with-title portfolio-masonry blog-m col-2 gutter ">
 
-                        <!-- DB Items loop -->
-                        {% for obj in pysankyx %} 
-                            <div class="portfolio-item {{obj.category_slug}} ">
-                                <div class="thumb">
+                    <!-- DB Items loop -->
+                    {% for obj in pysankyx %} 
+                        <div class="portfolio-item {{obj.category_slug}} ">
+                            <div class="thumb">
 
-                                    <div class="portfolio-slider-{{obj.slider}}">
-                                        <ul class="slides">
-                                            
-                                            {% if obj.image1 %}
-                                                <li>
-                                                    <a href="{{ url_for('static', filename='' ~ obj.image1) }}" title="">
-                                                        <img src="{{ url_for('static', filename='' ~ obj.image1) }}" alt="">
-                                                    </a>
-                                                </li>
-                                            {% endif %}
+                                <div class="portfolio-slider-{{obj.slider}}">
+                                    <ul class="slides">
+                                        
+                                        {% if obj.image1 %}
+                                            <li>
+                                                <a href="{{ url_for('static', filename='' ~ obj.image1) }}" title="">
+                                                    <img src="{{ url_for('static', filename='' ~ obj.image1) }}" alt="">
+                                                </a>
+                                            </li>
+                                        {% endif %}
 
-                                            {% if obj.image2 %}
-                                                <li>
-                                                    <a href="{{ url_for('static', filename='' ~ obj.image2) }}" title="">
-                                                        <img src="{{ url_for('static', filename='' ~ obj.image2) }}" alt="">
-                                                    </a>
-                                                </li>
-                                            {% endif %}
+                                        {% if obj.image2 %}
+                                            <li>
+                                                <a href="{{ url_for('static', filename='' ~ obj.image2) }}" title="">
+                                                    <img src="{{ url_for('static', filename='' ~ obj.image2) }}" alt="">
+                                                </a>
+                                            </li>
+                                        {% endif %}
 
-                                            {% if obj.image3 %}
-                                                <li>
-                                                    <a href="{{ url_for('static', filename='' ~ obj.image3) }}" title="">
-                                                        <img src="{{ url_for('static', filename='' ~ obj.image3) }}" alt="">
-                                                    </a>
-                                                </li>
-                                            {% endif %}
+                                        {% if obj.image3 %}
+                                            <li>
+                                                <a href="{{ url_for('static', filename='' ~ obj.image3) }}" title="">
+                                                    <img src="{{ url_for('static', filename='' ~ obj.image3) }}" alt="">
+                                                </a>
+                                            </li>
+                                        {% endif %}
 
-                                            {% if obj.image4 %}
-                                                <li>
-                                                    <a href="{{ url_for('static', filename='' ~ obj.image4) }}" title="">
-                                                        <img src="{{ url_for('static', filename='' ~ obj.image4) }}" alt="">
-                                                    </a>
-                                                </li>
-                                            {% endif %}
+                                        {% if obj.image4 %}
+                                            <li>
+                                                <a href="{{ url_for('static', filename='' ~ obj.image4) }}" title="">
+                                                    <img src="{{ url_for('static', filename='' ~ obj.image4) }}" alt="">
+                                                </a>
+                                            </li>
+                                        {% endif %}
 
-                                        </ul>
-                                    </div>
-
-
-                                    <div class="portfolio-hover">
-                                        <div class="action-btn">
-                                            <a href="#"> <i class="icon-basic_magnifier"></i> 
-                                            </a>
-                                        </div>
-                                        <div class="portfolio-description">
-                                            <h4><a href="#">{{obj.name}}</a></h4>
-                                            <p><a href="#">{{obj.category_name}}</a>
-                                            </p>
-                                        </div>
-                                    </div>
+                                    </ul>
                                 </div>
-                                <div class="portfolio-title">
-                                    <h4>{{obj.name}}</h4>
-                                    {% if obj.link %}
-                                        <div class="date">{{ obj.link }}</div>
-                                    {% endif %}
-                                    <p>{{ obj.description }}</p>
-                                    <div class="product-price">
-                                        <!-- <del>$79.00</del> $59.99 -->
-                                        {{ obj.price }}
+
+
+                                <div class="portfolio-hover">
+                                    <div class="action-btn">
+                                        <a href="#"> <i class="icon-basic_magnifier"></i> 
+                                        </a>
                                     </div>
-                                    <div class="m-top-20 m-bot-20"><a href="blog-single.html" class="btn btn-extra-small btn-dark-border btn-transparent   "><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                    <div class="portfolio-description">
+                                        <h4><a href="#">{{obj.name}}</a></h4>
+                                        <p><a href="#">{{obj.category_name}}</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
-                        {% endfor %}
-
-                    </div>
-
-                </div>
-                {% else %}
-                    <!-- No aviable items, so sold out -->
-                    <div class="row">
-                        <div class="heading-title text-center">
-                            <h3 class="text-uppercase">SOLD OUT</h3>
-                            <span class="text-uppercase">Some Alert Message  Examples </span>
+                            <div class="portfolio-title">
+                                <h4>{{obj.name}}</h4>
+                                {% if obj.link %}
+                                    <div class="date">{{ obj.link }}</div>
+                                {% endif %}
+                                <p>{{ obj.description }}</p>
+                                <div class="product-price">
+                                    <!-- <del>$79.00</del> $59.99 -->
+                                    {{ obj.price }}
+                                </div>
+                                <div class="m-top-20 m-bot-20"><a href="blog-single.html" class="btn btn-extra-small btn-dark-border btn-transparent   "><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                {% endif %}
-            </div>
-        </section>
-        <!--body content end-->
+                    {% endfor %}
 
-        <!--footer 1 start -->
-        <footer id="footer" class="gray text-center footer-1">
-            <div class="container">
-                <div class="social-link circle m-top-80 m-bot-80">
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-envelope"></i></a>
                 </div>
+
             </div>
-        </footer>
-        <!--footer 1 end-->
-    </div>
-
-
-    <script src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBvoxNVNChCmTJqmmLFKEu_QyakDi5wOds"></script>
-     <!-- inject:js -->
-    <script src="{{ url_for('static', filename='vendor/modernizr/modernizr.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/jquery/jquery-1.10.2.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/bootstrap-validator/validator.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/breakpoint/breakpoint.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/count-to/jquery.countTo.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/countdown/jquery.countdown.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/easing/jquery.easing.1.3.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/elasic-slider/jquery.eislideshow.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/flex-slider/jquery.flexslider-min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/gmap/jquery.gmap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/images-loaded/imagesloaded.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/isotope/jquery.isotope.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/mailchimp/jquery.ajaxchimp.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/menuzord/menuzord.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/nav/jquery.nav.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/owl-carousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/parallax-js/parallax.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/smooth/smooth.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/sticky/jquery.sticky.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/touchspin/touchspin.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/typist/typist.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/visible/visible.js') }}"></script>
-    <script src="{{ url_for('static', filename='vendor/wow/wow.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <!-- endinject -->
-
-    <!--vertical dotted nav-->
-    <script src="{{ url_for('static', filename='vendor/vertical-fixed-nav/main.js') }}"></script>
-</body>
-
-</html>
+            {% else %}
+                <!-- No aviable items, so sold out -->
+                <div class="row">
+                    <div class="heading-title text-center">
+                        <h3 class="text-uppercase">SOLD OUT</h3>
+                        <span class="text-uppercase">Some Alert Message  Examples </span>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    <!--body content end-->
+{% endblock %}

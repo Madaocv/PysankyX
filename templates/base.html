@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <!--favicon icon-->
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <title>PysankyX</title>
+    <!--common style-->
+    <link href='http://fonts.googleapis.com/css?family=Abel|Source+Sans+Pro:400,300,300italic,400italic,600,600italic,700,700italic,900,900italic,200italic,200' rel='stylesheet' type='text/css'>
+
+    <!-- inject:css -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/animate/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/elasic-slider/elastic.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/iconmoon/linea-icon.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/magnific-popup/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/owl-carousel/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/owl-carousel/owl.theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shortcodes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/default-theme.css') }}">
+    <!-- endinject -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/vendor/backward/html5shiv.js"></script>
+    <script src="assets/vendor/backward/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    
+    <!--  preloader start -->
+    <div id="tb-preloader">
+        <div class="tb-preloader-wave"></div>
+    </div>
+    <!-- preloader end -->
+
+
+    <div class="wrapper" id="home">
+
+        <!--header start-->
+        <nav id="cd-vertical-nav" class="dotted-nav">
+            <ul class="op-nav">
+                <li>
+                    <a href="#home">
+                        <span class="cd-dot"></span>
+                        <span class="cd-label">Home</span>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="#start">
+                        <span class="cd-dot"></span>
+                        <span class="cd-label">About</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#price">
+                        <span class="cd-dot"></span>
+                        <span class="cd-label">Cart</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+        <!--for responsive nav-->
+        <a class="cd-nav-trigger cd-img-replace">Open navigation<span></span></a>
+        <!--header end-->
+        {% block content %}
+        {% endblock %}
+        <!--footer 1 start -->
+        <footer id="footer" class="gray text-center footer-1">
+            <div class="container">
+                <div class="social-link circle m-top-80 m-bot-80">
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-envelope"></i></a>
+                </div>
+            </div>
+        </footer>
+        <!--footer 1 end-->
+    </div>
+
+
+    <script src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBvoxNVNChCmTJqmmLFKEu_QyakDi5wOds"></script>
+     <!-- inject:js -->
+    <script src="{{ url_for('static', filename='vendor/modernizr/modernizr.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/jquery/jquery-1.10.2.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap-validator/validator.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/breakpoint/breakpoint.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/count-to/jquery.countTo.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/countdown/jquery.countdown.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/easing/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/easy-pie-chart/jquery.easypiechart.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/elasic-slider/jquery.eislideshow.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/flex-slider/jquery.flexslider-min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/gmap/jquery.gmap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/images-loaded/imagesloaded.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/isotope/jquery.isotope.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/mailchimp/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/menuzord/menuzord.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/nav/jquery.nav.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/owl-carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/parallax-js/parallax.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/smooth/smooth.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/sticky/jquery.sticky.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/touchspin/touchspin.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/typist/typist.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/visible/visible.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <!-- endinject -->
+
+    <!--vertical dotted nav-->
+    <script src="{{ url_for('static', filename='vendor/vertical-fixed-nav/main.js') }}"></script>
+</body>
+
+</html>
